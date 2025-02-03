@@ -20,7 +20,7 @@ cep.addEventListener("blur",(e)=>{
     //Declarando os padrões de consulta
     const options = {
         method: 'GET',     //Buscar dados do servidor API (padrão do fetch)
-        mode: 'cors',     //Permite que a requisição seja feita para outro domínio se o servidor permitir
+        mode: 'no-cors',     //Permite que a requisição seja feita para outro domínio se o servidor permitir
         cache: 'default' //Usa o comportamento padrão do navegador
     }
 
@@ -39,7 +39,7 @@ cep.addEventListener("blur",(e)=>{
     }
     
     //Fetch na API para buscar os dados de acordo com o CEP que o usuário digitou
-    fetch(`https://viacep.com.br/ws/${search}/json/`, options)
+    fetch(`https://apihom.correios.com.br/cep/v1/enderecos/${search} `, options)
 
     .then(response=>{response.json()    //Se a consulta der certo, trazer a response em formato JSON
         .then( data => showData(data)) //Se trazer em JSON, retorne os dados com a função (showData)
